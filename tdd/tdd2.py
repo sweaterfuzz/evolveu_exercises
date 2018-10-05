@@ -5,7 +5,8 @@ def add_five(number):
     return number + 5
 
 def my_max(numList):
-    num = numList[0]
+    #num = numList[0]
+    num = 0
     for i in range(len(numList)):
         if numList[i]>num:
             num = numList[i]
