@@ -5,19 +5,24 @@ def add_five(number):
     return number + 5
 
 def my_max(numList):
-    #num = numList[0]
-    num = 0
-    for i in range(len(numList)):
-        if numList[i]>num:
-            num = numList[i]
-    return num
+    if numList:
+        num = numList[0]
+        for i in range(len(numList)):
+            if numList[i]>num:
+                num = numList[i]
+        return num
+    else:
+        return None
 
 def my_min(numList):
-    num = numList[0]
-    for i in range(len(numList)):
-        if numList[i]<num:
-            num = numList[i]
-    return num
+    if numList:
+        num = numList[0]
+        for i in range(len(numList)):
+            if numList[i]<num:
+                num = numList[i]
+        return num
+    else:
+        return None
 
 def has_string(stringList, searchFor):
     # if searchFor == None:
@@ -49,7 +54,10 @@ def add_contents(stuff):
     return total
 
 def lookup(myDict,myKey):
-    return myDict.get(myKey)+" mine"
+    if myKey in myDict:
+        return myDict.get(myKey)+" mine"
+    else:
+        return " mine"
 
 def getFirstNames(nameList):
     firstNames = []
