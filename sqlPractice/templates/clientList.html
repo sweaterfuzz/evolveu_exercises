@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>{{ title }}</title>
+        
+</head>
+<body>
+    <h1>{{ title }}</h1>
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID number</th>
+                    <th>Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for key, client in clients.items() %}
+                <tr>
+                    <td>{{key}}</a></td>
+                    <td>{{client.name}}</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+ 
+</body>
+
+</html> 
