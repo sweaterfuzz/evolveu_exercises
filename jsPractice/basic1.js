@@ -36,3 +36,22 @@ function moveLeft(id) {
     shape.setAttribute('transform','translate(' + xpos + ',0)');
     shape.setAttribute('mydata:xtrans', xpos);
 }
+
+function addTwoNums() {
+    var numbers = document.getElementById('calc');
+    var i;
+    var sum = 0.0;
+    for (i=0; i < numbers.length ; i++) {
+        sum += parseFloat(numbers.elements[i].value);
+    }
+    document.getElementById('output').innerHTML += 'The numbers sum to ' + sum + '<br>';
+}
+
+function moveTo() {
+    var numbers = document.getElementById('moveToCoords');
+    var mx = parseInt(numbers.elements[0].value);
+    var my = parseInt(numbers.elements[1].value);
+    
+    var shape = document.getElementById('movingstar');
+    shape.setAttribute('transform','translate(' + mx + ',' + my + ')');
+}

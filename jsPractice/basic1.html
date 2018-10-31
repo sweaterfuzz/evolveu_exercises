@@ -21,7 +21,16 @@
 </body>
 
 <div id="mydiv" onmouseover="clearDiv()">
-    This is my new div <br>
+        This is my magic disappearing div <br>
+</div>
+
+<div>
+    <form id="calc">
+        First number: <input type=number name="firstNum"> <br>
+        Second number:  <input type=number name="secondNum"> <br>
+    </form>
+    <button onclick="addTwoNums();"> Add them! </button> <br> 
+    <p id="output"></p>
 </div>
 
 <div id="svgCircle">
@@ -47,6 +56,24 @@
                 points="100,10 40,198 190,78 10,78 160,198"
                 style="fill:blue;stroke:purple;stroke-width:5;fill-rule:nonzero;" 
                 mydata:xtrans="0"/>
+        </svg>
+</div>
+
+<div>
+    <p>Move the red star to a new position:</p>
+    <form id="moveToCoords">
+        x-coordinate: <input type=number name="xcoord"> <br>
+        y-coordinate:  <input type=number name="ycoord"> <br>
+    </form>
+    <button onclick="moveTo();"> Move it! </button> <br> 
+</div>
+
+<div id="movingShape">
+        <svg height="1200" width="1200">
+                <polygon id="movingstar" 
+                points="100,10 40,198 190,78 10,78 160,198"
+                style="fill:red;stroke:purple;stroke-width:5;fill-rule:nonzero;" 
+                />
         </svg>
 </div>
 
