@@ -1,3 +1,5 @@
+// ************************** ///
+
 var myModule = function() {
     var myString = 'string from myModule';
     console.log('Hi!');

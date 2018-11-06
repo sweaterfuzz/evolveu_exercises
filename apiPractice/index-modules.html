@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <title>Client info</title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <div class="common-box top-bottom">
+        <p>Move this info to the bottom div:</p>
+            <textarea rows="2" cols="75" id="infoInTextArea">
+                blah blah blah
+            </textarea>
+        <button id="moveToBottom"> Move it! </button> <br> 
+    </div>
+
+    <div class="common-box right-left">
+        <h1 id="leftBox">Left</h1>
+    </div>
+
+    <div class="common-box right-left">
+        <h1 id="rightBox">Right</h1>
+    </div>
+
+    <div class="common-box top-bottom">
+        <p id="bottomBox"></p>
+    </div>
+
+    <div class="common-box large">
+        <button id="jsonEvent"> JSON event </button>
+        <button id="arrayPrint"> Display array below </button>
+        <button id="objectPrint"> Display object below </button> <br>
+        <p id="outputArea">Stuff goes here</p>
+    </div>
+
+</body>
+
+<script type="text/javascript" src="modules1.js"></script>
+</html>
