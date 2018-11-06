@@ -8,27 +8,24 @@ GAME RULES:
 - The player can choose to 'Hold', which means that their ROUND score gets added 
     to their GLOBAL score. After that, it's the next player's turn
 - The first player to reach 100 points on GLOBAL score wins the game
+- extension: entire score is lost if two 6's are rolled consecutively
 */
 
-var scores, roundScore, activePlayer, gamePlaying, winningScore; 
+var scores, roundScore, activePlayer, gamePlaying, winningScore, prevRoll; 
 
-winningScore = 10;
+winningScore = 20;
 init();
 
-// similar to css selector - find id in html, #id
-// document.querySelector('#current-0').textContent = dice;
-//document.querySelector('#current-' + activePlayer).textContent = dice; // places plain text
-//document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '<em>'; // places HTML
-
-// accessing and assigning an html element by id
-// var x = document.querySelector('#score-0').textContent;
-// console.log(x);
 
 //Anonymous function:
 document.querySelector('.btn-roll').addEventListener('click', function() {
     if (gamePlaying) {
         // generate a random number
-        var dice = Math.floor(Math.random()*6)+1;
+        //var dice = Math.floor(Math.random()*6)+1; 
+        //var dice = 6;
+        var dice;
+        var fakeDice = Math.floor(Math.random()*6)+1;
+        fakeDice <= 3 ? dice = 6 : dice = 5;
 
         // display result
         var diceDom = document.querySelector('.dice')
@@ -36,14 +33,20 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
         diceDom.src = 'dice-'+dice+'.png';
 
         // update the round score if rolled number was not a 1
-        if (dice !== 1) {
+        if (dice === 6 && prevRoll === 6) {
+            scores[activePlayer] = 0;
+            document.getElementById('score-'+activePlayer).textContent = scores[activePlayer];
+            nextPlayer();
+        } else if (dice !== 1) { 
             // add score
             roundScore += dice;
+            prevRoll = dice;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
         } else {
             nextPlayer();
         };
-    }
+    };
+    console.log(prevRoll, scores);
 });
 
 document.querySelector('.btn-hold').addEventListener('click', function() {
@@ -69,6 +72,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
 function nextPlayer() {
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
     roundScore = 0;
+    prevRoll = 0;
     // zero-out scores
     document.getElementById('current-0').textContent = '0';
     document.getElementById('current-1').textContent = '0';

@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
         <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
-        <link type="text/css" rel="stylesheet" href="style.css">
+        <link type="text/css" rel="stylesheet" href="style-2Dice.css">
         
         <title>Pig Game</title>
     </head>
@@ -33,7 +33,9 @@
             <button class="btn-roll"><i class="ion-ios-loop"></i>Roll dice</button>
             <button class="btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
             
-            <img src="dice-5.png" alt="Dice" class="dice">
+            <!-- improvement: use and id to differentiate the two dice instead of two classes -->
+            <img src="dice-5.png" alt="Dice" class="dice1">
+            <img src="dice-5.png" alt="Dice" class="dice2">
 
             <form class="customScore" id="custScore">
                 Choose a custom winning score: <input type=number name="cScore">
@@ -41,6 +43,6 @@
             <button class="btn-num" id="getNum"><i class="ion-ios-plus-outline"></i>Update Score</button>
         </div>
         
-        <script src="app.js"></script>
+        <script src="app-twoDice.js"></script>
     </body>
 </html>

@@ -15,30 +15,27 @@ var scores, roundScore, activePlayer, gamePlaying, winningScore;
 winningScore = 10;
 init();
 
-// similar to css selector - find id in html, #id
-// document.querySelector('#current-0').textContent = dice;
-//document.querySelector('#current-' + activePlayer).textContent = dice; // places plain text
-//document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '<em>'; // places HTML
-
-// accessing and assigning an html element by id
-// var x = document.querySelector('#score-0').textContent;
-// console.log(x);
 
 //Anonymous function:
 document.querySelector('.btn-roll').addEventListener('click', function() {
     if (gamePlaying) {
         // generate a random number
-        var dice = Math.floor(Math.random()*6)+1;
+        var dice1 = Math.floor(Math.random()*6)+1;
+        var dice2 = Math.floor(Math.random()*6)+1;
 
         // display result
-        var diceDom = document.querySelector('.dice')
-        diceDom.style.display = 'block';
-        diceDom.src = 'dice-'+dice+'.png';
+        var dice1Dom = document.querySelector('.dice1')
+        dice1Dom.style.display = 'block';
+        dice1Dom.src = 'dice-'+dice1+'.png';
+
+        var dice2Dom = document.querySelector('.dice2')
+        dice2Dom.style.display = 'block';
+        dice2Dom.src = 'dice-'+dice2+'.png';
 
         // update the round score if rolled number was not a 1
-        if (dice !== 1) {
+        if (dice1 !== 1 && dice2 !== 1) {
             // add score
-            roundScore += dice;
+            roundScore += dice1 + dice2;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
         } else {
             nextPlayer();
@@ -55,7 +52,8 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         // check if player won the game
         if (scores[activePlayer] >= winningScore) {
             document.querySelector('#name-'+activePlayer).textContent = 'Winner!';
-            document.querySelector('.dice').style.display = 'none';
+            document.querySelector('.dice1').style.display = 'none';
+            document.querySelector('.dice2').style.display = 'none';
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
             document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
             gamePlaying = false;
@@ -80,7 +78,8 @@ function nextPlayer() {
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
     // hide the dice again
-    document.querySelector('.dice').style.display = 'none';
+    document.querySelector('.dice1').style.display = 'none';
+    document.querySelector('.dice2').style.display = 'none';
 };
 
 document.querySelector('.btn-new').addEventListener('click', init);
@@ -92,7 +91,8 @@ function init() {
     gamePlaying = true;
 
     // accessing and assigning a css element - eg class="dice", style="display: none;"
-    document.querySelector('.dice').style.display = 'none';
+    document.querySelector('.dice1').style.display = 'none';
+    document.querySelector('.dice2').style.display = 'none';
 
     // a faster way to access html elements
     document.getElementById('score-0').textContent = '0';
