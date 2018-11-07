@@ -4,10 +4,11 @@ var Person = function(name, yearOfBirth, job) {
     this.name = name;
     this.yearOfBirth = yearOfBirth;
     this.job = job;
+    
     this.calculateAge = function(){
         console.log(2018-this.yearOfBirth);
     };
-}
+};
 
 // alternate way to assign a method to a constructor
 Person.prototype.youngerAge = function() {
@@ -82,10 +83,37 @@ interviewQuestion('teacher')('Pat');
 })(5); // 5 is the value of goodLuck var
 
 
-// Section 5 coding challenge
+// Section 5 coding challenge: a pop-up quiz
 
-var Question = function(theQuestion, theAnswers, correctAns) {
-    this.theQuestion = theQuestion;
-    this.theAnswers = theAnswers;
-    this.correctAns = correctAns;
-}
+(function() {
+
+    var Question = function(theQuestion, theAnswers, correctAns) {
+        this.theQuestion = theQuestion;
+        this.theAnswers = theAnswers;
+        this.correctAns = correctAns;
+    
+        this.printAnswers = function() {
+            var ansString = "";
+            for (var i=0; i < this.theAnswers.length; i++) {
+                ansString += i + ": " + this.theAnswers[i] + ". ";
+            }
+            return ansString;
+        };
+    }
+    
+    var question1 = new Question('Best coffee drink?', ["americano", "espresso", "latte*"], 2);
+    var question2 = new Question('Best kind of tea?', ["chai*", "green", "herbal"], 0);
+    var question3 = new Question('Best kind of food?', ["pizza", "bbq", "curry*"], 2);
+    
+    var questionArr = [question1,question2,question3];
+    var qnum = Math.floor(Math.random()*3);
+    console.log(questionArr[qnum].theQuestion);
+
+    answer = window.prompt(questionArr[qnum].theQuestion + " " + questionArr[qnum].printAnswers());
+    
+    if (answer == questionArr[qnum].correctAns) {
+        console.log('Great job!');
+    } else {
+        console.log('You are wrong.');
+    }
+})();
