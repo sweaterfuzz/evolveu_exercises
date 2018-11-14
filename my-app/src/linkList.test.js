@@ -30,7 +30,7 @@ test('Link list tests', () => {
     // playObj.addNext('fourth');
     //expect(playObj.show()).toBe('first second third fourth');
     // --------------------------------------------------------//
-
+    
     console.log(playObj.head.next.next);
     console.log(playObj.traverse(), playObj.show());
 });
