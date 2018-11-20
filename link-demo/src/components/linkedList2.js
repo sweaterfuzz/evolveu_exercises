@@ -13,7 +13,7 @@ class LinkList {
         return ll;
     }
 
-    traverse() {
+    lengthLL() {
         let ll = 1;
         let currNode = this.head;
         while (currNode.next) {
@@ -21,6 +21,16 @@ class LinkList {
             currNode = currNode.next;
         }
         return ll;
+    }
+
+    traverseTo(goal) {
+        let ll = 1;
+        let currNode = this.head;
+        while (currNode.next && ll<goal) {
+            ll++;
+            currNode = currNode.next;
+        }
+        return currNode.nodeVal;
     }
 
     add(newNode) {

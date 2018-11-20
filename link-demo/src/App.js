@@ -1,34 +1,18 @@
 import React, { Component } from 'react';
-import LL from './linkedList';
 import LinkedListComp from './components/LinkedListComp'
-// import './App.css';
-
-let linkedList = null;
-function createLL() {
-  linkedList = new LL.LinkList('Head');
-  console.log(linkedList);
-}
-
-let nodeCounter = 0;
-function addNode() {
-  if (linkedList) {
-    nodeCounter++;
-    linkedList.add(nodeCounter);
-    console.log(linkedList.show());
-  } else {
-    console.log('Please create a linked list first.');
-  }
-}
-
 
 class App extends Component {
+
+  onPassedFunction = () => {
+    console.log("hello from the App function");
+  }
+  
   render() {
     return (
       <div className="linkedListApp">
-        <button onClick={createLL}>Create Linked List</button>
-        <button onClick={addNode}>Add a node</button>
-        <h1>This is my new beginning</h1>
-        <LinkedListComp/>
+        {/* <LinkedListComp name='Top' func={this.onPassedFunction}/> */}
+        <h1>Linked List Demo</h1>
+        <LinkedListComp name='props getting passed'/>
       </div>
     );
   }
