@@ -90,6 +90,28 @@ class LinkedListComp extends Component {
         return listNum;
     }
 
+    removeNode = () => {
+        let nodeNum = parseInt(document.getElementById("delNode").value);
+        let newList = "";
+        if (this.ll) {
+            newList = this.ll.remove(nodeNum);
+            this.setState({allNodes:this.ll.show()});
+            this.setState({count:this.ll.lengthLL()});
+        }
+    }
+
+    insertNode = () => {
+        let nodeNum = parseInt(document.getElementById("insertNodePl").value);
+        let nodeVal = document.getElementById("insertNodeVal").value;
+        let newList = "";
+        if (this.ll) {
+            newList = this.ll.insert(nodeNum, nodeVal);
+            this.setState({allNodes:this.ll.show()});
+            this.setState({count:this.ll.lengthLL()});
+        }
+    }
+    
+
     render() {
         return (
         <div className="linkedList"> 
@@ -110,6 +132,17 @@ class LinkedListComp extends Component {
         <button onClick={this.goToLast}> Go to Last </button> <br></br>
         <button onClick={this.onGoForward}> Go Forward </button>
         <button onClick={this.onGoBack}> Go Back </button> <br></br>
+        
+        <br></br>
+        <button onClick={this.removeNode}> Remove node #</button> 
+        <input type='text' id='delNode'></input>  <br></br>
+
+        <br></br>
+        Insert a new node at: 
+        <input type='text' id='insertNodePl'></input> <br></br>
+        with value: 
+        <input type='text' id='insertNodeVal'></input>  
+        <button onClick={this.insertNode}>Insert</button>
 
         <p>Current node value: {this.state.displayVal}</p>
         </div>

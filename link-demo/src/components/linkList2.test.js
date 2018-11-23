@@ -24,4 +24,17 @@ test('Link list tests', () => {
     expect(playObj.traverseTo(1)).toBe('first');
 
     expect(playObj.lengthLL()).toBe(4);
+
+    expect(playObj.remove(3)).toBe('first second fourth');
+    expect(playObj.remove(3)).toBe('first second');
+    expect(playObj.remove(1)).toBe('second');
+    expect(playObj.head.nodeVal).toBe('second');
+    expect(playObj.head.next).toBeNull;
+    expect(playObj.remove(3)).toBe('Please enter a valid node number');
+
+    expect(playObj.insert(1,'three')).toBe('second three');
+    expect(playObj.insert(1,'two-point-five')).toBe('second two-point-five three');
+    expect(playObj.insert(0,'one')).toBe('one second two-point-five three');
+    expect(playObj.insert(4,'four')).toBe('one second two-point-five three four');
+    
 });
